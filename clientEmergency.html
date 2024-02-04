@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Emergency App</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="clientEmergency.js"></script>
+
+  
+</head>
+  <style>
+    /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+    .flip-card {
+      background-color: transparent;
+      width: 200px;
+      height: 100px;
+      border: 1px solid #f1f1f1;
+      perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    }
+
+    /* This container is needed to position the front and back side */
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    /* Do an horizontal flip when you move the mouse over the flip box container */
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    /* Position the front and back side */
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden; /* Safari */
+      backface-visibility: hidden;
+    }
+
+    /* Style the front side (fallback if image is missing) */
+    .flip-card-front {
+      background-color: #bbb;
+      color: black;
+    }
+
+    /* Style the back side */
+    .flip-card-back {
+      background-color: dodgerblue;
+      color: black;
+      transform: rotateY(180deg);
+    }
+
+
+
+
+
+
+
+    
+    body{
+      color: white;
+    }
+    button {
+      background-color:white  ;
+      border: none;
+      color: black;
+      border-radius: 20px;;
+      padding: 20px 48px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 15px;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      margin: 10px 2px;
+      cursor: pointer;
+    }
+    h2 {
+      color: white;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    input{
+      margin: 10px 15px;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    </style>
+
+<body>
+
+
+
+
+
+
+
+
+  
+  <div class = "form">
+    <button id="homePage" onclick=homePage() style="background-color: #2E86C1; position: absolute; top: 0; right: 0">Home Page</button>
+
+  </div>
+  <h2 style="padding-left:20%">WHAT TYPE OF EMERGENCY?</h2>
+  <button id="fire" type="button" onclick=fire() style="margin-left:30px">Fire</button>
+  <script>
+      document.getElementById('fire').onclick = function() {
+          document.getElementById('text').innerHTML = 'You have chosen to submit a fire alarm. Please do the following: Exit the premises according to your location. If you are in Mr. Baez classroom, exit through the back doors to the Sports Complex parking lot, then wait for directions to go to the Football Field. Call 911 if you are unable to leave. Report to the nearest emergency location or use the app';
+      }
+  </script>
+
+  
+  <button id="Earthquake" onclick=earthquake()>Earthquake</button>
+  <script>
+      document.getElementById('Earthquake').onclick = function() {
+          document.getElementById('text').innerHTML = 'You have chosen to submit a Earthquake alarm. Please do the following: DUCK and COVER away from windows and light fixtures. Call 911 if assistance is necessary. Report to the nearest emergency location when earthquake is over.';
+      }
+  </script>
+  <button id="Lockdown" onclick=lockdown()>Lockdown (Intruder) </button>
+  <script>
+      document.getElementById('Lockdown').onclick = function() {
+          document.getElementById('text').innerHTML = 'You have chosen to submit a Lockdown intruder alarm. Please do the following: Immediately notify Office and lock ALL doors to classroom. Do not be exposed to the hall or windows. Build furniture barricades and prepare for escape/run routes. Call 911';
+      }
+  </script>
+  <button id="Medical" onclick=medical()>Medical Emergency</button>
+  <script>
+      document.getElementById('Medical').onclick = function() {
+          document.getElementById('text').innerHTML = 'You have chosen to submit a Medical Emergency alarm. Please do the following: Contact site main office for medical emergency protocols. District nurse: 925-383-9474';
+      }
+  </script>
+
+  <p style="margin-left:40px; margin-right:40px; border: 1px solid black; border-color: white; width: 50%;display:flex; padding-left:50px;font-size: 20px;" id="text" >Instructions for each individual emergency will be displayed here!</p>
+  
+  <img align="right" src="map.png" alt="Map Picture Escape Routes" style="width:600px;height:450px;padding-right:50px;">
+
+  <table style="padding-left:250px">
+  <tb>
+    <td>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <p>Emergency Police Line</p>
+        </div>
+        <div class="flip-card-back">
+          <a href="tel:911" style="color:blue; text-decoration:underline;">
+              911
+          </a>
+        </div>
+      </div>
+    </div>
+    </td>
+    <td>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <p>District Nurse</p>
+        </div>
+        <div class="flip-card-back">
+          <a href="tel:9253839474" style="color:blue; text-decoration:underline;">
+            925-383-9474
+  
+          </a>
+        </div>
+      </div>
+    </div>
+    </td>
+  </td>
+
+</table>
+  <center><button style="background-color: #2E86C1;" class="time" onclick=timePicker() type="time" id="time">Click for current time</button></center>
+  <center><button style="background-color: #2E86C1;" class="date" onclick=datePicker() type="date" id="date" >Click for current date</button></center>
+  <center><img style="width:75px; height:75px;" src="deeyem.png" class="viewMessages" onclick=viewMessages() type="image"></img></center>
+  <center><div><p>View Messages</p></div></center>
+
+
+  
+
+</body>
+</html>
